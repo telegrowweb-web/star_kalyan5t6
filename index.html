@@ -64,7 +64,7 @@ body {
 
 /* PAGE */
 .page {
-  max-width: 640px;
+  max-width: 100%;
   margin: 0 auto;
   padding: 18px 14px 100px;
 }
@@ -156,6 +156,9 @@ body {
 .prog-track { background: #e0e0e0; border-radius: 8px; height: 6px; overflow: hidden; margin-bottom: 5px; }
 .prog-fill { height: 100%; background: var(--green); border-radius: 8px; width: 0%; transition: width 0.25s; }
 .prog-lbl { font-size: 11px; color: var(--text-secondary); text-align: center; }
+
+/* DESKTOP GRID */
+.desktop-grid { display: block; }
 
 /* CARD */
 .card {
@@ -352,10 +355,30 @@ body {
 }
 
 @media (min-width: 769px) {
-  .page { padding: 28px 20px 60px; }
-  .logo-box { width: 108px; height: 108px; border-radius: 22px; }
-  .app-name { font-size: 25px; }
-  .topbar { padding: 0 28px; }
+  .page { padding: 28px 40px 60px; max-width: 100%; }
+  .topbar { padding: 0 40px; }
+  .topbar-search { max-width: 500px; }
+
+  /* Full width 2-col layout on laptop */
+  .desktop-grid {
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    gap: 28px;
+    align-items: start;
+  }
+  .hero {
+    position: sticky;
+    top: 72px;
+  }
+  .logo-box { width: 120px; height: 120px; border-radius: 22px; }
+  .app-name { font-size: 26px; }
+  .hero { padding: 32px 24px 28px; }
+  .btn-dl { font-size: 17px; padding: 15px 20px; }
+}
+
+@media (min-width: 1200px) {
+  .page { padding: 32px 60px 60px; }
+  .desktop-grid { grid-template-columns: 420px 1fr; gap: 36px; }
 }
 </style>
 </head>
@@ -392,6 +415,7 @@ body {
     <span>Star Kalyan</span>
   </div>
 
+  <div class="desktop-grid">
   <!-- HERO -->
   <div class="hero">
     <div class="logo-box" style="background:#000;border-color:#333;">
@@ -616,6 +640,7 @@ body {
     </div>
 
   </div>
+  </div><!-- end desktop-grid -->
 </div>
 
 <!-- MODAL -->
