@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Star Kalyan - Download App</title>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --green: #01875f;
+    --green-light: #e6f4f1;
+    --blue: #1a73e8;
+    --text-primary: #202124;
+    --text-secondary: #5f6368;
+    --border: #dadce0;
+    --bg: #f8f9fa;
+    --white: #ffffff;
+    --star: #f9ab00;
+    --badge-bg: #e8f0fe;
+    --badge-text: #1a73e8;
+  }
+
+  body {
+    font-family: 'Roboto', sans-serif;
+    background: var(--bg);
+    color: var(--text-primary);
+    min-height: 100vh;
+  }
+
+  /* TOP BAR */
+  .topbar {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    padding: 0 24px;
+    height: 56px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    gap: 16px;
+  }
+  .topbar-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Google Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--text-primary);
+    text-decoration: none;
+  }
+  .topbar-logo svg { width: 28px; height: 28px; }
+  .topbar-search {
+    flex: 1;
+    max-width: 600px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 8px 16px;
+    font-size: 14px;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .topbar-actions { margin-left: auto; display: flex; gap: 8px; align-items: center; }
+  .topbar-icon-btn {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--text-secondary);
+    transition: background 0.15s;
+  }
+  .topbar-icon-btn:hover { background: var(--bg); }
+  .avatar {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #f9ab00, #e37400);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 700; color: white;
+    cursor: pointer;
+  }
+
+  /* MAIN LAYOUT */
+  .main-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px 24px;
+  }
+
+  /* BREADCRUMB */
+  .breadcrumb {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 13px; color: var(--text-secondary);
+    margin-bottom: 16px;
+  }
+  .breadcrumb a { color: var(--blue); text-decoration: none; }
+  .breadcrumb a:hover { text-decoration: underline; }
+  .breadcrumb-sep { color: var(--text-secondary); }
+
+  /* HERO SECTION */
+  .hero {
+    display: flex;
+    gap: 32px;
+    background: var(--white);
+    border-radius: 16px;
+    padding: 28px 28px;
+    margin-bottom: 24px;
+    border: 1px solid var(--border);
+    flex-wrap: wrap;
+  }
+
+  .hero-icon {
+    width: 96px; height: 96px;
+    border-radius: 20px;
+    overflow: hidden;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
+  .hero-icon img { width: 100%; height: 100%; object-fit: cover; }
+  .hero-icon-fallback {
+    width: 96px; height: 96px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #0f3460 100%);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 36px;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
+
+  .hero-info { flex: 1; min-width: 200px; }
+  .hero-title {
+    font-family: 'Google Sans', sans-serif;
+    font-size: 26px;
+    font-weight: 500;
+    color: var(--text-primary);
+    line-height: 1.2;
+    margin-bottom: 4px;
+  }
+  .hero-dev {
+    font-size: 14px; color: var(--green);
+    font-weight: 500; margin-bottom: 6px;
+    cursor: pointer;
+  }
+  .hero-dev:hover { text-decoration: underline; }
+  .hero-tags {
+    display: flex; flex-wrap: wrap; gap: 6px;
+    margin-bottom: 12px;
+  }
+  .tag {
+    background: var(--badge-bg);
+    color: var(--badge-text);
+    border-radius: 12px;
+    padding: 3px 10px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .tag.green { background: var(--green-light); color: var(--green); }
+
+  .hero-stats {
+    display: flex; gap: 20px; flex-wrap: wrap;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 10px 0; margin-bottom: 16px;
+  }
+  .stat-item {
+    display: flex; flex-direction: column; align-items: center;
+    gap: 2px;
+  }
+  .stat-val {
+    font-family: 'Google Sans', sans-serif;
+    font-size: 15px; font-weight: 500;
+    color: var(--text-primary);
+    display: flex; align-items: center; gap: 3px;
+  }
+  .stat-val .star-icon { color: var(--star); font-size: 14px; }
+  .stat-label { font-size: 11px; color: var(--text-secondary); }
+  .stat-divider { width: 1px; background: var(--border); align-self: stretch; }
+
+  /* DOWNLOAD BUTTON */
+  .btn-download {
+    background: var(--green);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 32px;
+    font-size: 15px;
+    font-weight: 500;
+    font-family: 'Google Sans', sans-serif;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-flex; align-items: center; gap: 8px;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-download:hover { background: #017a54; box-shadow: 0 2px 8px rgba(1,135,95,0.35); }
+  .btn-download:active { transform: scale(0.98); }
+
+  /* DOWNLOAD PENDING STATE */
+  .btn-download.pending {
+    background: #e0e0e0;
+    color: var(--text-secondary);
+    cursor: default;
+    pointer-events: none;
+  }
+  .btn-download.downloading {
+    background: var(--green-light);
+    color: var(--green);
+    border: 2px solid var(--green);
+  }
+
+  .progress-bar-wrap {
+    display: none;
+    width: 100%;
+    background: #e0e0e0;
+    border-radius: 8px;
+    height: 6px;
+    margin-top: 10px;
+    overflow: hidden;
+  }
+  .progress-bar-wrap.visible { display: block; }
+  .progress-bar-inner {
+    height: 100%;
+    background: var(--green);
+    border-radius: 8px;
+    width: 0%;
+    transition: width 0.3s ease;
+  }
+
+  .progress-status {
+    font-size: 12px; color: var(--text-secondary);
+    margin-top: 6px;
+    display: none;
+  }
+  .progress-status.visible { display: block; }
+
+  /* WISHLIST */
+  .btn-wishlist {
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 11px 18px;
+    font-size: 14px;
+    color: var(--blue);
+    font-weight: 500;
+    cursor: pointer;
+    display: inline-flex; align-items: center; gap: 6px;
+    margin-left: 8px;
+    transition: background 0.15s;
+  }
+  .btn-wishlist:hover { background: var(--badge-bg); }
+
+  /* TABS */
+  .tabs {
+    display: flex;
+    border-bottom: 2px solid var(--border);
+    background: var(--white);
+    border-radius: 12px 12px 0 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tab-btn {
+    padding: 14px 20px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    white-space: nowrap;
+    transition: all 0.15s;
+    font-family: 'Google Sans', sans-serif;
+  }
+  .tab-btn.active { color: var(--green); border-bottom-color: var(--green); }
+  .tab-btn:hover:not(.active) { background: var(--bg); }
+
+  /* CONTENT SECTIONS */
+  .section-card {
+    background: var(--white);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    padding: 24px;
+    margin-bottom: 16px;
+  }
+  .section-title {
+    font-family: 'Google Sans', sans-serif;
+    font-size: 16px; font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 14px;
+  }
+
+  /* SCREENSHOTS */
+  .screenshots-scroll {
+    display: flex; gap: 12px;
+    overflow-x: auto; padding-bottom: 8px;
+    scrollbar-width: thin;
+  }
+  .screenshots-scroll::-webkit-scrollbar { height: 4px; }
+  .screenshots-scroll::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+  .screenshot-item {
+    flex-shrink: 0;
+    width: 160px; height: 280px;
+    border-radius: 12px;
+    background: linear-gradient(160deg, #0f0f1a 0%, #1a1a2e 50%, #0d1b2a 100%);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    position: relative;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+  }
+  .screenshot-item .screen-label {
+    font-size: 18px; font-weight: 700;
+    background: linear-gradient(135deg, #f9ab00, #ff6b35);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+    padding: 8px;
+  }
+  .screenshot-item .screen-sub {
+    font-size: 10px; color: rgba(255,255,255,0.5);
+    text-align: center; padding: 0 8px;
+  }
+
+  /* ABOUT / DESC */
+  .desc-text {
+    font-size: 14px; line-height: 1.7;
+    color: var(--text-secondary);
+    overflow: hidden;
+  }
+  .desc-text.collapsed { max-height: 80px; }
+  .expand-btn {
+    color: var(--green); font-size: 13px; font-weight: 500;
+    cursor: pointer; background: none; border: none;
+    padding: 8px 0 0 0; display: block;
+  }
+  .expand-btn:hover { text-decoration: underline; }
+
+  /* RATINGS */
+  .ratings-grid {
+    display: grid; grid-template-columns: auto 1fr;
+    gap: 24px; align-items: center;
+  }
+  .big-rating {
+    text-align: center;
+  }
+  .big-rating-num {
+    font-family: 'Google Sans', sans-serif;
+    font-size: 52px; font-weight: 300;
+    color: var(--text-primary); line-height: 1;
+  }
+  .stars-row { display: flex; gap: 2px; justify-content: center; margin: 4px 0; }
+  .star { font-size: 16px; color: var(--star); }
+  .star.empty { color: #dadce0; }
+  .ratings-count { font-size: 12px; color: var(--text-secondary); }
+  .rating-bars { display: flex; flex-direction: column; gap: 4px; }
+  .rbar-row { display: flex; align-items: center; gap: 8px; }
+  .rbar-label { font-size: 12px; color: var(--text-secondary); width: 8px; }
+  .rbar-track {
+    flex: 1; height: 8px;
+    background: #e0e0e0; border-radius: 4px; overflow: hidden;
+  }
+  .rbar-fill { height: 100%; background: var(--star); border-radius: 4px; }
+
+  /* INFO LIST */
+  .info-list { display: flex; flex-direction: column; gap: 14px; }
+  .info-row { display: flex; gap: 16px; align-items: flex-start; }
+  .info-icon { color: var(--text-secondary); flex-shrink: 0; }
+  .info-content {}
+  .info-label { font-size: 11px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
+  .info-value { font-size: 14px; color: var(--text-primary); font-weight: 500; }
+
+  /* SAFETY */
+  .safety-item {
+    display: flex; align-items: center; gap: 12px;
+    padding: 12px 0; border-bottom: 1px solid var(--border);
+  }
+  .safety-item:last-child { border-bottom: none; }
+  .safety-icon {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: var(--green-light);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .safety-info h4 { font-size: 14px; font-weight: 500; color: var(--text-primary); }
+  .safety-info p { font-size: 12px; color: var(--text-secondary); margin-top: 2px; }
+
+  /* MODAL OVERLAY */
+  .modal-overlay {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 1000;
+    align-items: flex-end;
+    justify-content: center;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal-sheet {
+    background: var(--white);
+    border-radius: 24px 24px 0 0;
+    padding: 28px 24px 40px;
+    width: 100%; max-width: 500px;
+    animation: slideUp 0.3s ease;
+  }
+  @keyframes slideUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+  }
+  .modal-drag { width: 40px; height: 4px; background: #dadce0; border-radius: 2px; margin: 0 auto 20px; }
+  .modal-title { font-family: 'Google Sans', sans-serif; font-size: 20px; font-weight: 500; margin-bottom: 6px; }
+  .modal-subtitle { font-size: 13px; color: var(--text-secondary); margin-bottom: 20px; }
+  .modal-file-info {
+    background: var(--bg);
+    border-radius: 12px; padding: 14px 16px;
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 20px;
+  }
+  .file-icon { font-size: 28px; }
+  .file-details h4 { font-size: 14px; font-weight: 500; }
+  .file-details p { font-size: 12px; color: var(--text-secondary); margin-top: 2px; }
+  .modal-progress-bar {
+    background: #e0e0e0; border-radius: 8px; height: 8px;
+    overflow: hidden; margin-bottom: 10px;
+  }
+  .modal-progress-inner {
+    height: 100%; background: var(--green); border-radius: 8px;
+    width: 0%; transition: width 0.3s ease;
+  }
+  .modal-progress-text {
+    font-size: 13px; color: var(--text-secondary);
+    text-align: center; margin-bottom: 20px;
+  }
+  .modal-btn {
+    width: 100%; padding: 14px;
+    border-radius: 10px; border: none;
+    font-size: 16px; font-weight: 500;
+    cursor: pointer; transition: all 0.2s;
+    font-family: 'Google Sans', sans-serif;
+  }
+  .modal-btn-primary { background: var(--green); color: white; }
+  .modal-btn-primary:hover { background: #017a54; }
+  .modal-btn-cancel { background: transparent; color: var(--text-secondary); margin-top: 8px; }
+
+  /* FOOTER NAV (mobile) */
+  .bottom-nav {
+    display: none;
+    position: fixed; bottom: 0; left: 0; right: 0;
+    background: var(--white);
+    border-top: 1px solid var(--border);
+    padding: 8px 0 env(safe-area-inset-bottom);
+    z-index: 90;
+  }
+  .bottom-nav-inner {
+    display: flex; justify-content: space-around; align-items: center;
+  }
+  .bnav-item {
+    display: flex; flex-direction: column; align-items: center; gap: 2px;
+    padding: 6px 16px; cursor: pointer;
+    color: var(--text-secondary); font-size: 11px;
+    border-radius: 8px; transition: color 0.15s;
+  }
+  .bnav-item.active { color: var(--green); }
+  .bnav-item svg { width: 22px; height: 22px; }
+
+  /* RESPONSIVE */
+  @media (max-width: 640px) {
+    .main-container { padding: 12px 12px 80px; }
+    .hero { padding: 16px; gap: 16px; }
+    .hero-title { font-size: 20px; }
+    .topbar { padding: 0 12px; }
+    .topbar-search { display: none; }
+    .bottom-nav { display: block; }
+    .ratings-grid { grid-template-columns: 1fr; }
+    .big-rating { text-align: left; display: flex; align-items: center; gap: 12px; }
+    .big-rating-num { font-size: 40px; }
+    .section-card { padding: 16px; }
+    .screenshot-item { width: 130px; height: 230px; }
+    .hero-stats { gap: 14px; }
+  }
+
+  @media (min-width: 900px) {
+    .layout-grid { display: grid; grid-template-columns: 1fr 360px; gap: 24px; }
+    .sidebar-sticky { position: sticky; top: 72px; }
+  }
+
+  /* FOOTER CREDIT */
+  .site-footer {
+    background: var(--white);
+    border-top: 1px solid var(--border);
+    padding: 18px 24px 24px;
+    margin-top: 8px;
+  }
+  .credit {
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-secondary);
+    padding: 10px 0 env(safe-area-inset-bottom);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    flex-wrap: wrap;
+  }
+  .credit svg { width: 15px; height: 15px; vertical-align: middle; }
+  .credit a {
+    color: #0088cc;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: color 0.15s;
+  }
+  .credit a:hover { color: #006699; text-decoration: underline; }
+  .credit-tg-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px; height: 18px;
+    background: #0088cc;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .credit-tg-icon svg { width: 11px; height: 11px; fill: white; }
+
+  @media (max-width: 640px) {
+    .site-footer { padding: 14px 16px 80px; }
+    .credit { font-size: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <a class="topbar-logo" href="#">
+    <svg viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M256 32L64 160v192l192 128 192-128V160L256 32z" fill="#01875f"/>
+      <path d="M256 32l192 128-192 128L64 160 256 32z" fill="#34a853"/>
+      <path d="M256 288v192L64 352V160l192 128z" fill="#0d652d"/>
+    </svg>
+    Play Store
+  </a>
+  <div class="topbar-search">
+    <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="m16.5 16.5 3.5 3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    Search apps, games, movies...
+  </div>
+  <div class="topbar-actions">
+    <button class="topbar-icon-btn" title="Help">
+      <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 17v-1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M12 13c0-2 3-2.5 3-4.5a3 3 0 0 0-6 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <div class="avatar">S</div>
+  </div>
+</div>
+
+<div class="main-container">
+  <!-- BREADCRUMB -->
+  <div class="breadcrumb">
+    <a href="#">Games</a>
+    <span class="breadcrumb-sep">›</span>
+    <a href="#">Casino</a>
+    <span class="breadcrumb-sep">›</span>
+    <span>Star Kalyan</span>
+  </div>
+
+  <div class="layout-grid">
+    <div>
+      <!-- HERO -->
+      <div class="hero">
+        <div style="width:96px;height:96px;border-radius:20px;overflow:hidden;flex-shrink:0;box-shadow:0 2px 12px rgba(0,0,0,0.18);background:#0f1a2e;display:flex;align-items:center;justify-content:center;">
+          <img src="https://starkalyan.club/assets/images/logo-2.png" alt="Star Kalyan Logo" style="width:90%;height:90%;object-fit:contain;">
+        </div>
+
+        <div class="hero-info">
+          <div class="hero-title">Star Kalyan</div>
+          <div class="hero-dev">Star Kalyan Official</div>
+          <div class="hero-tags">
+            <span class="tag">Casino</span>
+            <span class="tag">Matka</span>
+            <span class="tag green">✓ Verified</span>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat-item">
+              <div class="stat-val"><span class="star-icon">★</span> 4.8</div>
+              <div class="stat-label">Rating</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <div class="stat-val">1M+</div>
+              <div class="stat-label">Downloads</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <div class="stat-val">🏆</div>
+              <div class="stat-label">Top App</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <div class="stat-val">18+</div>
+              <div class="stat-label">Rated</div>
+            </div>
+          </div>
+
+          <div style="display:flex;align-items:center;flex-wrap:wrap;gap:8px;">
+            <a href="assets/apkk/star-kalyan.apk" id="downloadBtn" class="btn-download" download onclick="startDownload(event)">
+              <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path d="M12 4v12m0 0-4-4m4 4 4-4M4 20h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Install
+            </a>
+            <button class="btn-wishlist">
+              <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Wishlist
+            </button>
+          </div>
+          <div class="progress-bar-wrap" id="progBar">
+            <div class="progress-bar-inner" id="progFill"></div>
+          </div>
+          <div class="progress-status" id="progStatus">Preparing download...</div>
+        </div>
+      </div>
+
+      <!-- TABS -->
+      <div class="section-card" style="padding:0;overflow:hidden;">
+        <div class="tabs">
+          <button class="tab-btn active" onclick="switchTab(this,'about')">About this app</button>
+          <button class="tab-btn" onclick="switchTab(this,'ratings')">Ratings & reviews</button>
+          <button class="tab-btn" onclick="switchTab(this,'safety')">Data safety</button>
+          <button class="tab-btn" onclick="switchTab(this,'info')">App info</button>
+        </div>
+
+        <!-- ABOUT TAB -->
+        <div id="tab-about" class="tab-content" style="padding:20px;">
+          <!-- TESTIMONIALS -->
+          <div class="section-title" style="margin-bottom:14px;">💬 User Testimonials</div>
+          <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:20px;">
+
+            <div style="background:linear-gradient(135deg,#e6f4f1,#f0faf7);border-radius:14px;padding:16px;border-left:4px solid #01875f;">
+              <div style="display:flex;gap:10px;align-items:center;margin-bottom:10px;">
+                <div style="width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#f9ab00,#e37400);display:flex;align-items:center;justify-content:center;font-weight:700;color:white;font-size:16px;flex-shrink:0;">R</div>
+                <div style="flex:1;"><div style="font-size:14px;font-weight:600;">Ravi Kumar</div><div style="font-size:11px;color:#5f6368;">Mumbai, Maharashtra</div></div>
+                <div style="color:#f9ab00;font-size:14px;">★★★★★</div>
+              </div>
+              <div style="font-size:13px;color:#3c4043;line-height:1.65;">"Star Kalyan app se meri zindagi badal gayi! Results bahut fast aate hain, kabhi delay nahi hota. Sab log download karo — best Matka app hai India mein! 🔥"</div>
+              <div style="font-size:11px;color:#01875f;margin-top:8px;font-weight:500;">✓ Verified User</div>
+            </div>
+
+            <div style="background:linear-gradient(135deg,#e8f0fe,#f5f8ff);border-radius:14px;padding:16px;border-left:4px solid #1a73e8;">
+              <div style="display:flex;gap:10px;align-items:center;margin-bottom:10px;">
+                <div style="width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#1a73e8,#0d47a1);display:flex;align-items:center;justify-content:center;font-weight:700;color:white;font-size:16px;flex-shrink:0;">A</div>
+                <div style="flex:1;"><div style="font-size:14px;font-weight:600;">Ankit Sharma</div><div style="font-size:11px;color:#5f6368;">Pune, Maharashtra</div></div>
+                <div style="color:#f9ab00;font-size:14px;">★★★★★</div>
+              </div>
+              <div style="font-size:13px;color:#3c4043;line-height:1.65;">"Maine bahut apps try kiye lekin Star Kalyan jaisa koi nahi! Charts bilkul clear hain, notifications time pe aati hain. 2 saal se use kar raha hoon aur kabhi bhi problem nahi aayi!"</div>
+              <div style="font-size:11px;color:#1a73e8;margin-top:8px;font-weight:500;">✓ Verified User · 2 years</div>
+            </div>
+
+            <div style="background:linear-gradient(135deg,#fce8e6,#fff5f4);border-radius:14px;padding:16px;border-left:4px solid #ea4335;">
+              <div style="display:flex;gap:10px;align-items:center;margin-bottom:10px;">
+                <div style="width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#ea4335,#b31412);display:flex;align-items:center;justify-content:center;font-weight:700;color:white;font-size:16px;flex-shrink:0;">P</div>
+                <div style="flex:1;"><div style="font-size:14px;font-weight:600;">Priya Mehta</div><div style="font-size:11px;color:#5f6368;">Ahmedabad, Gujarat</div></div>
+                <div style="color:#f9ab00;font-size:14px;">★★★★★</div>
+              </div>
+              <div style="font-size:13px;color:#3c4043;line-height:1.65;">"Pehle bohot sari apps use karti thi lekin Star Kalyan ne sab replace kar diya. Live results, guessing tips — sab ek jagah milta hai. Meri poori family use karti hai ab! 👍"</div>
+              <div style="font-size:11px;color:#ea4335;margin-top:8px;font-weight:500;">✓ Verified User</div>
+            </div>
+
+            <div style="background:linear-gradient(135deg,#fff3e0,#fffaf0);border-radius:14px;padding:16px;border-left:4px solid #f9ab00;">
+              <div style="display:flex;gap:10px;align-items:center;margin-bottom:10px;">
+                <div style="width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#f9ab00,#e65100);display:flex;align-items:center;justify-content:center;font-weight:700;color:white;font-size:16px;flex-shrink:0;">S</div>
+                <div style="flex:1;"><div style="font-size:14px;font-weight:600;">Suresh Patel</div><div style="font-size:11px;color:#5f6368;">Rajkot, Gujarat</div></div>
+                <div style="color:#f9ab00;font-size:14px;">★★★★★</div>
+              </div>
+              <div style="font-size:13px;color:#3c4043;line-height:1.65;">"Kalyan, Mumbai, Rajdhani — sab markets ke results ek app mein! Bahut easy to use hai aur mobile mein smooth chalta hai. Developer ko bahut shukriya is zabardast app ke liye! 👏"</div>
+              <div style="font-size:11px;color:#f9ab00;margin-top:8px;font-weight:500;">✓ Verified User · Top Reviewer</div>
+            </div>
+
+            <div style="background:linear-gradient(135deg,#e6f4f1,#f0faf7);border-radius:14px;padding:16px;border-left:4px solid #01875f;">
+              <div style="display:flex;gap:10px;align-items:center;margin-bottom:10px;">
+                <div style="width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#34a853,#0d652d);display:flex;align-items:center;justify-content:center;font-weight:700;color:white;font-size:16px;flex-shrink:0;">M</div>
+                <div style="flex:1;"><div style="font-size:14px;font-weight:600;">Mohit Verma</div><div style="font-size:11px;color:#5f6368;">Delhi, India</div></div>
+                <div style="color:#f9ab00;font-size:14px;">★★★★★</div>
+              </div>
+              <div style="font-size:13px;color:#3c4043;line-height:1.65;">"Ekdum mast app hai bhai! Jo log satta matka mein serious hain unke liye yeh must have hai. Free hai aur koi problem nahi kabhi. Download karo abhi bina soche! Sirf Star Kalyan trust karo. 💯"</div>
+              <div style="font-size:11px;color:#01875f;margin-top:8px;font-weight:500;">✓ Verified User · 3 years</div>
+            </div>
+
+          </div>
+
+          <div class="section-title">About Star Kalyan</div>
+          <div class="desc-text collapsed" id="descText">
+            <strong>Star Kalyan</strong> is India's #1 Matka result app — trusted by millions of players for fast, accurate, and live Satta Matka results. Get real-time updates for Kalyan, Mumbai, Milan, Rajdhani, Main Ratan and all other markets. Our app is designed for serious players who demand the fastest results.<br><br>
+            ✅ <strong>Live Results</strong> — Get results as they happen, no delays<br>
+            ✅ <strong>Complete Charts</strong> — Full Jodi, Panel, Panna charts<br>
+            ✅ <strong>All Markets</strong> — Kalyan, Mumbai, Rajdhani, Milan, Ratan, Main Bazaar & more<br>
+            ✅ <strong>Free to Use</strong> — 100% free, no hidden charges<br>
+            ✅ <strong>Push Notifications</strong> — Never miss a result<br>
+            ✅ <strong>Expert Tips</strong> — Daily guessing forum by top predictors<br>
+            ✅ <strong>Secure & Safe</strong> — Your data is always protected<br><br>
+            Download Star Kalyan today and join over 1 million players who trust us for the fastest Matka results in India!
+          </div>
+          <button class="expand-btn" id="expandBtn" onclick="toggleDesc()">Show more ▾</button>
+
+          <!-- WHAT'S NEW -->
+          <div class="section-title" style="margin-top:20px;">What's new</div>
+          <div style="font-size:13px;color:var(--text-secondary);line-height:1.7;">
+            <strong>Version 2.5.1</strong><br>
+            • Faster live result updates<br>
+            • New dark mode UI<br>
+            • Improved notification system<br>
+            • Bug fixes and performance improvements
+          </div>
+        </div>
+
+        <!-- RATINGS TAB -->
+        <div id="tab-ratings" class="tab-content" style="padding:20px;display:none;">
+          <div class="ratings-grid">
+            <div class="big-rating">
+              <div class="big-rating-num">4.8</div>
+              <div class="stars-row">
+                <span class="star">★</span><span class="star">★</span>
+                <span class="star">★</span><span class="star">★</span>
+                <span class="star">★</span>
+              </div>
+              <div class="ratings-count">12.4K reviews</div>
+            </div>
+            <div class="rating-bars">
+              <div class="rbar-row"><span class="rbar-label">5</span><div class="rbar-track"><div class="rbar-fill" style="width:76%"></div></div></div>
+              <div class="rbar-row"><span class="rbar-label">4</span><div class="rbar-track"><div class="rbar-fill" style="width:14%"></div></div></div>
+              <div class="rbar-row"><span class="rbar-label">3</span><div class="rbar-track"><div class="rbar-fill" style="width:5%"></div></div></div>
+              <div class="rbar-row"><span class="rbar-label">2</span><div class="rbar-track"><div class="rbar-fill" style="width:3%"></div></div></div>
+              <div class="rbar-row"><span class="rbar-label">1</span><div class="rbar-track"><div class="rbar-fill" style="width:2%"></div></div></div>
+            </div>
+          </div>
+          <div style="border-top:1px solid var(--border);margin-top:20px;padding-top:16px;display:flex;flex-direction:column;gap:16px;">
+            <div class="review-card" style="border-bottom:1px solid var(--border);padding-bottom:16px;">
+              <div style="display:flex;gap:10px;align-items:center;margin-bottom:6px;">
+                <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#f9ab00,#e37400);display:flex;align-items:center;justify-content:center;font-weight:700;color:white;font-size:14px;">R</div>
+                <div><div style="font-size:14px;font-weight:500;">Ravi Kumar</div><div style="font-size:11px;color:var(--text-secondary);">March 10, 2025</div></div>
+                <div style="margin-left:auto;color:var(--star);font-size:13px;">★★★★★</div>
+              </div>
+              <div style="font-size:13px;color:var(--text-secondary);">Best Matka app! Results come so fast. Never had any issues. Highly recommend to all players! 🔥</div>
+            </div>
+            <div class="review-card" style="border-bottom:1px solid var(--border);padding-bottom:16px;">
+              <div style="display:flex;gap:10px;align-items:center;margin-bottom:6px;">
+                <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#34a853,#0d652d);display:flex;align-items:center;justify-content:center;font-weight:700;color:white;font-size:14px;">A</div>
+                <div><div style="font-size:14px;font-weight:500;">Ankit Sharma</div><div style="font-size:11px;color:var(--text-secondary);">February 28, 2025</div></div>
+                <div style="margin-left:auto;color:var(--star);font-size:13px;">★★★★★</div>
+              </div>
+              <div style="font-size:13px;color:var(--text-secondary);">Very good app. Live results are accurate. Charts are easy to read. Download karo sab log!</div>
+            </div>
+            <div>
+              <div style="display:flex;gap:10px;align-items:center;margin-bottom:6px;">
+                <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#1a73e8,#0d47a1);display:flex;align-items:center;justify-content:center;font-weight:700;color:white;font-size:14px;">P</div>
+                <div><div style="font-size:14px;font-weight:500;">Priya Mehta</div><div style="font-size:11px;color:var(--text-secondary);">February 15, 2025</div></div>
+                <div style="margin-left:auto;color:var(--star);font-size:13px;">★★★★☆</div>
+              </div>
+              <div style="font-size:13px;color:var(--text-secondary);">Great app, notifications work perfectly. Would love more chart options in future update.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SAFETY TAB -->
+        <div id="tab-safety" class="tab-content" style="padding:20px;display:none;">
+          <div style="background:var(--green-light);border-radius:12px;padding:14px;margin-bottom:16px;display:flex;gap:10px;align-items:center;">
+            <svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.35C17.25 22.15 21 17.25 21 12V7l-9-5z" fill="#01875f"/><path d="m9 12 2 2 4-4" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+            <div>
+              <div style="font-size:14px;font-weight:500;color:var(--green);">Data safety verified</div>
+              <div style="font-size:12px;color:var(--text-secondary);">Developer provided safety information</div>
+            </div>
+          </div>
+          <div class="safety-item">
+            <div class="safety-icon"><svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8zM6 1v3M10 1v3M14 1v3" stroke="#01875f" stroke-width="2" stroke-linecap="round"/></svg></div>
+            <div class="safety-info"><h4>No data shared with third parties</h4><p>The developer doesn't share user data with any other companies</p></div>
+          </div>
+          <div class="safety-item">
+            <div class="safety-icon"><svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="#01875f" stroke-width="2" stroke-linecap="round"/></svg></div>
+            <div class="safety-info"><h4>Encrypted in transit</h4><p>All data is secured using industry-standard encryption</p></div>
+          </div>
+          <div class="safety-item">
+            <div class="safety-icon"><svg width="20" height="20" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke="#01875f" stroke-width="2"/><path d="m9 12 2 2 4-4" stroke="#01875f" stroke-width="2" stroke-linecap="round"/></svg></div>
+            <div class="safety-info"><h4>You can request data deletion</h4><p>Developer allows you to request deletion of your data</p></div>
+          </div>
+        </div>
+
+        <!-- INFO TAB -->
+        <div id="tab-info" class="tab-content" style="padding:20px;display:none;">
+          <div class="info-list">
+            <div class="info-row">
+              <svg class="info-icon" width="20" height="20" fill="none" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="2"/></svg>
+              <div class="info-content"><div class="info-label">Version</div><div class="info-value">2.5.1</div></div>
+            </div>
+            <div class="info-row">
+              <svg class="info-icon" width="20" height="20" fill="none" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 21h8M12 17v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              <div class="info-content"><div class="info-label">Updated on</div><div class="info-value">March 10, 2025</div></div>
+            </div>
+            <div class="info-row">
+              <svg class="info-icon" width="20" height="20" fill="none" viewBox="0 0 24 24"><path d="M12 4v12m0 0-4-4m4 4 4-4M4 20h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              <div class="info-content"><div class="info-label">File size</div><div class="info-value">~15 MB</div></div>
+            </div>
+            <div class="info-row">
+              <svg class="info-icon" width="20" height="20" fill="none" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z" stroke="currentColor" stroke-width="2"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" stroke="currentColor" stroke-width="2"/></svg>
+              <div class="info-content"><div class="info-label">Downloads</div><div class="info-value">1,000,000+</div></div>
+            </div>
+            <div class="info-row">
+              <svg class="info-icon" width="20" height="20" fill="none" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" stroke="currentColor" stroke-width="2"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              <div class="info-content"><div class="info-label">Developer</div><div class="info-value">Star Kalyan Official</div></div>
+            </div>
+            <div class="info-row">
+              <svg class="info-icon" width="20" height="20" fill="none" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" stroke="currentColor" stroke-width="2"/><path d="M12 18h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              <div class="info-content"><div class="info-label">Requires Android</div><div class="info-value">5.0 and up</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SIDEBAR (desktop) -->
+    <div class="sidebar-sticky">
+      <div class="section-card" style="margin-bottom:16px;">
+        <div style="text-align:center;padding:8px 0;">
+          <img src="https://starkalyan.club/assets/images/logo-2.png" alt="Star Kalyan Logo" 
+               style="height:70px;object-fit:contain;margin-bottom:12px;">
+          <div style="font-family:'Google Sans',sans-serif;font-size:16px;font-weight:500;margin-bottom:4px;">Star Kalyan</div>
+          <div style="font-size:12px;color:var(--text-secondary);margin-bottom:16px;">India's #1 Matka App</div>
+          <a href="assets/apkk/star-kalyan.apk" download class="btn-download" style="width:100%;justify-content:center;" onclick="startDownload(event)">
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path d="M12 4v12m0 0-4-4m4 4 4-4M4 20h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Download APK
+          </a>
+          <div style="font-size:11px;color:var(--text-secondary);margin-top:8px;">Free • 15 MB • v2.5.1</div>
+        </div>
+      </div>
+
+      <div class="section-card">
+        <div class="section-title">App Highlights</div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="display:flex;gap:10px;align-items:center;">
+            <div style="width:36px;height:36px;border-radius:10px;background:var(--green-light);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">⚡</div>
+            <div><div style="font-size:13px;font-weight:500;">Live Results</div><div style="font-size:11px;color:var(--text-secondary);">Instant updates</div></div>
+          </div>
+          <div style="display:flex;gap:10px;align-items:center;">
+            <div style="width:36px;height:36px;border-radius:10px;background:#e8f0fe;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">📊</div>
+            <div><div style="font-size:13px;font-weight:500;">Full Charts</div><div style="font-size:11px;color:var(--text-secondary);">Jodi, Panel, Panna</div></div>
+          </div>
+          <div style="display:flex;gap:10px;align-items:center;">
+            <div style="width:36px;height:36px;border-radius:10px;background:#fce8e6;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">🔔</div>
+            <div><div style="font-size:13px;font-weight:500;">Push Alerts</div><div style="font-size:11px;color:var(--text-secondary);">Never miss results</div></div>
+          </div>
+          <div style="display:flex;gap:10px;align-items:center;">
+            <div style="width:36px;height:36px;border-radius:10px;background:#fff3e0;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">🎯</div>
+            <div><div style="font-size:13px;font-weight:500;">Expert Tips</div><div style="font-size:11px;color:var(--text-secondary);">Daily guessing forum</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DOWNLOAD MODAL -->
+<div class="modal-overlay" id="downloadModal">
+  <div class="modal-sheet">
+    <div class="modal-drag"></div>
+    <div class="modal-title" id="modalTitle">Downloading...</div>
+    <div class="modal-subtitle" id="modalSubtitle">Star Kalyan APK is being prepared</div>
+    <div class="modal-file-info">
+      <div class="file-icon">📦</div>
+      <div class="file-details">
+        <h4>star-kalyan.apk</h4>
+        <p>Version 2.5.1 · ~15 MB · Free</p>
+      </div>
+    </div>
+    <div class="modal-progress-bar">
+      <div class="modal-progress-inner" id="modalProgFill"></div>
+    </div>
+    <div class="modal-progress-text" id="modalProgText">0% — Starting download...</div>
+    <button class="modal-btn modal-btn-cancel" onclick="closeModal()">Cancel</button>
+  </div>
+</div>
+
+<!-- BOTTOM NAV (mobile) -->
+<div class="bottom-nav">
+  <div class="bottom-nav-inner">
+    <div class="bnav-item active">
+      <svg fill="none" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2"/></svg>
+      Home
+    </div>
+    <div class="bnav-item">
+      <svg fill="none" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke="currentColor" stroke-width="2"/></svg>
+      Top Charts
+    </div>
+    <div class="bnav-item">
+      <svg fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M12 8v4l3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      Updates
+    </div>
+    <div class="bnav-item">
+      <svg fill="none" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" stroke="currentColor" stroke-width="2"/></svg>
+      Account
+    </div>
+  </div>
+</div>
+
+<script>
+  function switchTab(btn, tab) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.tab-content').forEach(c => c.style.display = 'none');
+    document.getElementById('tab-' + tab).style.display = 'block';
+  }
+
+  function toggleDesc() {
+    const el = document.getElementById('descText');
+    const btn = document.getElementById('expandBtn');
+    if (el.classList.contains('collapsed')) {
+      el.classList.remove('collapsed');
+      btn.textContent = 'Show less ▴';
+    } else {
+      el.classList.add('collapsed');
+      btn.textContent = 'Show more ▾';
+    }
+  }
+
+  function startDownload(e) {
+    // Show modal
+    openModal();
+    // Start progress animation
+    simulateProgress();
+  }
+
+  function openModal() {
+    document.getElementById('downloadModal').classList.add('open');
+  }
+
+  function closeModal() {
+    document.getElementById('downloadModal').classList.remove('open');
+    resetProgress();
+  }
+
+  let progInterval = null;
+
+  function simulateProgress() {
+    let pct = 0;
+    const fill = document.getElementById('modalProgFill');
+    const text = document.getElementById('modalProgText');
+    const title = document.getElementById('modalTitle');
+    const subtitle = document.getElementById('modalSubtitle');
+
+    const msgs = [
+      [0, 'Starting download...'],
+      [20, 'Connecting to server...'],
+      [40, 'Downloading APK file...'],
+      [70, 'Verifying package...'],
+      [90, 'Almost done...'],
+      [100, 'Download complete! ✓']
+    ];
+
+    // Also update top bar progress
+    const topFill = document.getElementById('progFill');
+    const topBar = document.getElementById('progBar');
+    const topStatus = document.getElementById('progStatus');
+    topBar.classList.add('visible');
+    topStatus.classList.add('visible');
+
+    clearInterval(progInterval);
+    progInterval = setInterval(() => {
+      if (pct < 100) {
+        pct += Math.random() * 8 + 2;
+        if (pct > 100) pct = 100;
+        fill.style.width = pct + '%';
+        topFill.style.width = pct + '%';
+
+        const msg = msgs.reverse().find(m => pct >= m[0]);
+        msgs.reverse();
+        if (msg) {
+          text.textContent = Math.round(pct) + '% — ' + msg[1];
+          topStatus.textContent = msg[1];
+        }
+
+        if (pct >= 100) {
+          clearInterval(progInterval);
+          title.textContent = 'Download Complete! 🎉';
+          subtitle.textContent = 'Open your file manager to install Star Kalyan';
+          text.textContent = '100% — File saved to Downloads folder';
+          topStatus.textContent = '✓ Download complete!';
+          setTimeout(() => {
+            closeModal();
+            topBar.classList.remove('visible');
+            topStatus.classList.remove('visible');
+            topFill.style.width = '0%';
+          }, 3000);
+        }
+      }
+    }, 200);
+  }
+
+  function resetProgress() {
+    clearInterval(progInterval);
+    document.getElementById('modalProgFill').style.width = '0%';
+    document.getElementById('modalProgText').textContent = '0% — Starting download...';
+    document.getElementById('modalTitle').textContent = 'Downloading...';
+    document.getElementById('modalSubtitle').textContent = 'Star Kalyan APK is being prepared';
+  }
+
+  // Close modal on overlay click
+  document.getElementById('downloadModal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
+</script>
+
+<!-- FOOTER CREDIT -->
+<footer class="site-footer">
+  <div class="credit">
+    <span>Ads by</span>
+    <a href="https://t.me/+TRlJl628l-FkMWE9" target="_blank" rel="noopener">
+      <span class="credit-tg-icon">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+      </span>
+      @Nexgroww_agency
+    </a>
+  </div>
+</footer>
+
+</body>
+</html>
