@@ -1,599 +1,79 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Star Kalyan - Download App</title>
-<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+<title>Star Kalyan– Download No.1 Online</title>
+
+<link rel="preload" as="image" href="/image/hero-img.png">
+
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
-:root{
-  --green:#01875f;--green-light:#e6f4f1;--blue:#1a73e8;
-  --text:#202124;--sub:#5f6368;--border:#dadce0;
-  --bg:#f8f9fa;--white:#fff;--star:#f9ab00;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins', Arial, sans-serif;
 }
-body{font-family:'Roboto',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
-
-/* ═══ TOPBAR ═══ */
-.topbar{
-  background:var(--white);border-bottom:1px solid var(--border);
-  height:56px;display:flex;align-items:center;
-  padding:0 24px;gap:16px;position:sticky;top:0;z-index:100;
+body{ background:#f2b08f; }
+.hero{ min-height:100vh; display:flex; align-items:center; justify-content:center; padding:24px 16px; }
+.hero-box{ max-width:1200px; width:100%; display:flex; align-items:center; justify-content:space-between; gap:40px; }
+.hero-left{ max-width:520px; }
+.hero-top a{ font-size:18px; font-weight:600; color:#000; text-decoration:underline; }
+.hero-actions{ margin:16px 0; display:flex; gap:12px; flex-wrap:wrap; }
+.btn{ padding:12px 20px; border-radius:10px; font-weight:600; color:#fff; text-decoration:none; display:inline-flex; align-items:center; gap:8px; }
+.call{ background:#0aa89e; }
+.whatsapp{ background:#45c556; }
+h1{ font-size:46px; font-weight:800; color:#000; line-height:1.15; margin-bottom:24px; }
+.download-wrap{ background:rgba(255,255,255,0.25); padding:14px; border-radius:18px; display:inline-block; }
+.download-btn{ position:relative; overflow:hidden; background:linear-gradient(180deg,#f6b400,#c58a00); border:none; padding:18px 34px; font-size:18px; font-weight:700; color:#fff; border-radius:14px; cursor:pointer; animation:pulse 1.8s infinite; }
+@keyframes pulse{
+  0%{ box-shadow:0 0 0 0 rgba(246,180,0,.6); }
+  70%{ box-shadow:0 0 0 14px rgba(246,180,0,0); }
+  100%{ box-shadow:0 0 0 0 rgba(246,180,0,0); }
 }
-.tlogo{display:flex;align-items:center;gap:8px;text-decoration:none;
-  font-family:'Google Sans',sans-serif;font-size:18px;font-weight:500;color:var(--text);}
-.tlogo svg{width:28px;height:28px;}
-.tsearch{
-  flex:1;max-width:560px;background:var(--bg);
-  border:1px solid var(--border);border-radius:24px;
-  padding:8px 16px;font-size:14px;color:var(--sub);
-  display:flex;align-items:center;gap:8px;
-}
-.tactions{margin-left:auto;display:flex;gap:6px;align-items:center;}
-.tibtn{width:38px;height:38px;border-radius:50%;border:none;background:transparent;
-  cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--sub);}
-.tibtn:hover{background:var(--bg);}
-.avatar{width:32px;height:32px;border-radius:50%;
-  background:linear-gradient(135deg,#f9ab00,#e37400);
-  display:flex;align-items:center;justify-content:center;
-  font-size:13px;font-weight:700;color:#fff;cursor:pointer;}
-
-/* ═══ PAGE WRAP ═══ */
-.wrap{max-width:1400px;margin:0 auto;padding:32px 48px 80px;}
-
-/* ═══ BREADCRUMB ═══ */
-.bc{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--sub);margin-bottom:28px;}
-.bc a{color:var(--blue);text-decoration:none;}
-.bc a:hover{text-decoration:underline;}
-
-/* ═══ HERO — Play Store style ═══ */
-.hero{
-  display:flex;align-items:flex-start;gap:0;
-  background:var(--white);border:1px solid var(--border);
-  border-radius:16px;overflow:hidden;margin-bottom:32px;
-  min-height:340px;
-}
-.hero-left{
-  flex:1;padding:40px 48px;
-  display:flex;flex-direction:column;
-  justify-content:flex-start;
-}
-.hero-right{
-  width:320px;flex-shrink:0;
-  background:#f0f0f0;
-  display:flex;align-items:center;justify-content:center;
-  padding:32px;min-height:340px;
-}
-.hero-logo-img{
-  width:260px;height:260px;object-fit:contain;
-  border-radius:28px;
-  background:#000;
-  box-shadow:0 8px 40px rgba(0,0,0,0.18);
-}
-
-.app-name{
-  font-family:'Google Sans',sans-serif;
-  font-size:36px;font-weight:400;color:var(--text);
-  line-height:1.15;margin-bottom:8px;
-}
-.app-dev{font-size:14px;color:var(--green);font-weight:500;margin-bottom:4px;cursor:pointer;}
-.app-dev:hover{text-decoration:underline;}
-.app-ads{font-size:13px;color:var(--sub);margin-bottom:20px;}
-
-.stats-row{display:flex;align-items:center;gap:28px;margin-bottom:24px;}
-.stat-item{display:flex;flex-direction:column;align-items:flex-start;gap:2px;}
-.stat-val{font-family:'Google Sans',sans-serif;font-size:15px;font-weight:500;
-  color:var(--text);display:flex;align-items:center;gap:3px;}
-.stat-val .si{color:var(--star);}
-.stat-lbl{font-size:12px;color:var(--sub);}
-.stat-sep{width:1px;height:36px;background:var(--border);}
-
-.btn-install{
-  display:inline-flex;align-items:center;gap:10px;
-  background:var(--green);color:#fff;border:none;border-radius:8px;
-  padding:13px 28px;font-size:15px;font-weight:500;
-  font-family:'Google Sans',sans-serif;cursor:pointer;
-  text-decoration:none;transition:all 0.2s;margin-bottom:16px;
-  align-self:flex-start;
-}
-.btn-install:hover{background:#017a54;box-shadow:0 3px 12px rgba(1,135,95,0.35);}
-.btn-install:active{transform:scale(0.98);}
-
-.install-note{font-size:13px;color:var(--sub);line-height:1.6;max-width:540px;}
-.install-note a{color:var(--blue);text-decoration:none;}
-.install-note a:hover{text-decoration:underline;}
-
-/* progress bar */
-.prog-wrap{display:none;margin-top:14px;max-width:320px;}
-.prog-wrap.show{display:block;}
-.prog-track{background:#e0e0e0;border-radius:8px;height:6px;overflow:hidden;margin-bottom:5px;}
-.prog-fill{height:100%;background:var(--green);border-radius:8px;width:0%;transition:width 0.25s;}
-.prog-lbl{font-size:12px;color:var(--sub);}
-
-/* ═══ TABS SECTION ═══ */
-.section{background:var(--white);border:1px solid var(--border);border-radius:16px;margin-bottom:24px;overflow:hidden;}
-.tabs{display:flex;border-bottom:1px solid var(--border);overflow-x:auto;scrollbar-width:none;}
-.tabs::-webkit-scrollbar{display:none;}
-.tab{
-  flex-shrink:0;padding:14px 20px;
-  font-size:14px;font-weight:500;font-family:'Google Sans',sans-serif;
-  color:var(--sub);border:none;background:transparent;cursor:pointer;
-  border-bottom:2px solid transparent;margin-bottom:-1px;
-  transition:all 0.15s;white-space:nowrap;
-}
-.tab.on{color:var(--green);border-bottom-color:var(--green);}
-.tab:hover:not(.on){background:var(--bg);}
-.tab-body{padding:28px 32px;}
-
-/* ═══ ABOUT ═══ */
-.sec-h{font-family:'Google Sans',sans-serif;font-size:16px;font-weight:600;margin-bottom:14px;}
-.desc{font-size:14px;line-height:1.8;color:var(--sub);overflow:hidden;}
-.desc.clamp{max-height:88px;}
-.more-btn{color:var(--green);font-size:14px;font-weight:500;
-  background:none;border:none;padding:8px 0 0;cursor:pointer;display:block;}
-
-/* ═══ TESTIMONIALS ═══ */
-.tlist{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px;}
-.tc{border-radius:14px;padding:16px;border-left:4px solid;}
-.tc-head{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
-.tc-av{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;
-  justify-content:center;font-weight:700;color:#fff;font-size:16px;flex-shrink:0;}
-.tc-name{font-size:14px;font-weight:600;}
-.tc-loc{font-size:11px;color:var(--sub);}
-.tc-stars{margin-left:auto;color:var(--star);font-size:14px;letter-spacing:1px;}
-.tc-txt{font-size:13px;color:#3c4043;line-height:1.65;}
-.tc-badge{font-size:11px;font-weight:500;margin-top:7px;}
-
-/* ═══ RATINGS ═══ */
-.rat-wrap{display:flex;gap:32px;align-items:center;flex-wrap:wrap;margin-bottom:24px;}
-.big-n{font-family:'Google Sans',sans-serif;font-size:64px;font-weight:300;line-height:1;}
-.big-s{color:var(--star);font-size:20px;margin:4px 0;}
-.big-c{font-size:12px;color:var(--sub);}
-.bars{flex:1;min-width:180px;display:flex;flex-direction:column;gap:6px;}
-.br{display:flex;align-items:center;gap:8px;}
-.bl{font-size:12px;color:var(--sub);width:8px;text-align:right;}
-.bt{flex:1;height:8px;background:#e0e0e0;border-radius:4px;overflow:hidden;}
-.bf{height:100%;background:var(--star);border-radius:4px;}
-.rev-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px;}
-.ri{border:1px solid var(--border);border-radius:12px;padding:16px;}
-.rh{display:flex;align-items:center;gap:9px;margin-bottom:8px;}
-.rav{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;
-  justify-content:center;font-weight:700;color:#fff;font-size:13px;}
-.rn{font-size:13px;font-weight:500;}
-.rd{font-size:11px;color:var(--sub);}
-.rs{margin-left:auto;color:var(--star);font-size:12px;}
-.rtxt{font-size:13px;color:var(--sub);line-height:1.6;}
-
-/* ═══ SAFETY ═══ */
-.saf-note{background:var(--green-light);border-radius:12px;padding:14px 16px;
-  display:flex;gap:10px;align-items:center;margin-bottom:18px;}
-.slist{display:flex;flex-direction:column;}
-.srow{display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid var(--border);}
-.srow:last-child{border-bottom:none;}
-.sic{width:44px;height:44px;border-radius:50%;background:var(--green-light);
-  display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.sh{font-size:14px;font-weight:500;}
-.sp{font-size:12px;color:var(--sub);margin-top:2px;}
-
-/* ═══ INFO ═══ */
-.ilist{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px;}
-.ir{display:flex;gap:12px;align-items:flex-start;}
-.iic{color:var(--sub);flex-shrink:0;margin-top:2px;}
-.il{font-size:11px;color:var(--sub);text-transform:uppercase;letter-spacing:0.4px;margin-bottom:3px;}
-.iv{font-size:14px;font-weight:500;}
-
-/* ═══ MODAL ═══ */
-.modal-ov{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:200;
-  align-items:flex-end;justify-content:center;}
-.modal-ov.open{display:flex;}
-.msheet{background:var(--white);border-radius:22px 22px 0 0;padding:24px 24px 40px;
-  width:100%;max-width:480px;animation:up 0.28s ease;}
-@keyframes up{from{transform:translateY(100%)}to{transform:translateY(0)}}
-.mdrag{width:38px;height:4px;background:#dadce0;border-radius:2px;margin:0 auto 18px;}
-.mt{font-family:'Google Sans',sans-serif;font-size:19px;font-weight:600;margin-bottom:4px;}
-.msub{font-size:13px;color:var(--sub);margin-bottom:18px;}
-.mfile{background:var(--bg);border-radius:10px;padding:12px 14px;
-  display:flex;align-items:center;gap:12px;margin-bottom:16px;}
-.mfi{font-size:26px;}
-.mfile h4{font-size:14px;font-weight:500;}
-.mfile p{font-size:12px;color:var(--sub);}
-.mpt{background:#e0e0e0;border-radius:8px;height:7px;overflow:hidden;margin-bottom:8px;}
-.mpf{height:100%;background:var(--green);border-radius:8px;width:0%;transition:width 0.25s;}
-.mptxt{font-size:12px;color:var(--sub);text-align:center;margin-bottom:18px;}
-.mcancel{width:100%;padding:12px;border-radius:10px;border:1px solid var(--border);
-  background:transparent;font-size:15px;color:var(--sub);cursor:pointer;
-  font-family:'Google Sans',sans-serif;}
-
-/* ═══ BOTTOM NAV (mobile only) ═══ */
-.bnav{display:none;position:fixed;bottom:0;left:0;right:0;background:var(--white);
-  border-top:1px solid var(--border);padding:5px 0 env(safe-area-inset-bottom,8px);z-index:90;}
-.bni{display:flex;justify-content:space-around;}
-.bnitem{display:flex;flex-direction:column;align-items:center;gap:2px;
-  padding:5px 10px;cursor:pointer;font-size:10px;color:var(--sub);}
-.bnitem.on{color:var(--green);}
-.bnitem svg{width:20px;height:20px;}
-
-/* ═══ FOOTER ═══ */
-.footer{background:var(--white);border-top:1px solid var(--border);padding:16px 48px 20px;}
-.credit{text-align:center;font-size:13px;color:var(--sub);
-  display:flex;align-items:center;justify-content:center;gap:5px;flex-wrap:wrap;}
-.credit a{color:#0088cc;text-decoration:none;font-weight:600;
-  display:inline-flex;align-items:center;gap:4px;}
-.credit a:hover{text-decoration:underline;}
-.tgico{display:inline-flex;align-items:center;justify-content:center;
-  width:18px;height:18px;background:#0088cc;border-radius:50%;}
-.tgico svg{width:10px;height:10px;fill:white;}
-
-/* ═══ RESPONSIVE ═══ */
-@media(max-width:900px){
-  .wrap{padding:20px 20px 80px;}
-  .hero{flex-direction:column-reverse;min-height:unset;}
-  .hero-left{padding:28px 20px;}
-  .hero-right{width:100%;min-height:240px;padding:24px;}
-  .hero-logo-img{width:160px;height:160px;}
-  .app-name{font-size:26px;}
-  .tlist{grid-template-columns:1fr;}
-  .rev-list{grid-template-columns:1fr;}
-  .ilist{grid-template-columns:1fr 1fr;}
-  .tab-body{padding:20px 16px;}
-  .footer{padding:14px 16px 20px;}
-  .bnav{display:block;}
-}
-@media(max-width:480px){
-  .wrap{padding:14px 12px 90px;}
-  .hero-left{padding:20px 14px;}
-  .hero-right{min-height:200px;padding:20px;}
-  .hero-logo-img{width:130px;height:130px;}
-  .app-name{font-size:22px;}
-  .stats-row{gap:16px;}
-  .tsearch{display:none;}
-  .ilist{grid-template-columns:1fr;}
-  .footer{padding:12px 12px 72px;}
-  .btn-install{width:100%;justify-content:center;}
-}
-@media(min-width:1400px){
-  .wrap{padding:36px 64px 80px;}
-  .hero-right{width:380px;}
-  .hero-logo-img{width:300px;height:300px;}
-  .app-name{font-size:40px;}
+.hero-right{ flex:1; display:flex; justify-content:center; }
+.hero-image{ width:450px; max-width:100%; height:auto; border-radius:20px; }
+@media(max-width:768px){
+  .hero-box{ flex-direction:column; text-align:center; gap:24px; }
+  .hero-right{ order:-1; }
+  h1{ font-size:32px; }
+  .hero-actions{ justify-content:center; }
+  .btn{ width:100%; justify-content:center; }
+  .download-wrap{ width:100%; }
+  .download-btn{ width:100%; padding:18px 0; font-size:17px; }
+  .hero-image{ width:260px; }
 }
 </style>
+
+<script>
+function installApp(){
+  window.location.href="https://starkalyan.club/assets/apkk/star-kalyan.apk";
+}
+</script>
 </head>
 <body>
 
-<!-- TOPBAR -->
-<div class="topbar">
-  <a class="tlogo" href="#">
-    <svg viewBox="0 0 40 40" fill="none">
-      <circle cx="20" cy="20" r="20" fill="#01875f"/>
-      <polygon points="20,7 11,15 11,27 20,33 29,27 29,15" fill="#34a853"/>
-      <polygon points="20,7 29,15 20,21 11,15" fill="#0d652d"/>
-    </svg>
-    Play Store
-  </a>
-  <div class="tsearch">
-    <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="m16.5 16.5 3.5 3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-    Search apps &amp; games...
-  </div>
-  <div class="tactions">
-    <button class="tibtn">
-      <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 17v-1M12 13c0-2 3-2.5 3-4.5a3 3 0 0 0-6 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-    </button>
-    <div class="avatar">S</div>
-  </div>
-</div>
-
-<div class="wrap">
-
-  <!-- BREADCRUMB -->
-  <div class="bc">
-    <a href="#">Games</a><span>›</span>
-    <a href="#">Casino</a><span>›</span>
-    <span>Star Kalyan</span>
-  </div>
-
-  <!-- ═══ HERO ═══ -->
-  <div class="hero">
+<section class="hero">
+  <div class="hero-box">
     <div class="hero-left">
-
-      <div class="app-name">Star Kalyan</div>
-      <div class="app-dev">Star Kalyan Official</div>
-      <div class="app-ads">Contains ads</div>
-
-      <div class="stats-row">
-        <div class="stat-item">
-          <div class="stat-val"><span class="si">★</span> 4.8</div>
-          <div class="stat-lbl">8 reviews</div>
-        </div>
-        <div class="stat-sep"></div>
-        <div class="stat-item">
-          <div class="stat-val">1M+</div>
-          <div class="stat-lbl">Downloads</div>
-        </div>
-        <div class="stat-sep"></div>
-        <div class="stat-item">
-          <div class="stat-val">
-            <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2"/><path d="M9 9h6M9 12h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-            18+
-          </div>
-          <div class="stat-lbl">Rated for 18+</div>
-        </div>
+      <div class="hero-top">
+        <a href="https://starkalyan.club/assets/apkk/star-kalyan.apk">+ Download</a>
       </div>
-
-      <a href="assets/apkk/star-kalyan.apk" download class="btn-install" onclick="startDL(event)">
-        <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path d="M12 4v12m0 0-4-4m4 4 4-4M4 20h16" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        Install
-      </a>
-
-      <div class="install-note">
-        Download and install the APK file directly on your Android device.
-        By downloading, you agree to the
-        <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.
-        <a href="#">Learn more</a>.
+      <div class="hero-actions">
+        <a href="https://starkalyan.club/assets/apkk/star-kalyan.apk" class="btn call">📞 Call Now</a>
+        <a href="https://starkalyan.club/assets/apkk/star-kalyan.apk" class="btn whatsapp">💬 WhatsApp</a>
       </div>
-
-      <div class="prog-wrap" id="pw">
-        <div class="prog-track"><div class="prog-fill" id="pf"></div></div>
-        <div class="prog-lbl" id="pl">Preparing download...</div>
+      <h1>Download NO.1<br>Online<br>Star Kalyan</h1>
+      <div class="download-wrap">
+        <button class="download-btn" onclick="installApp()">⬇ DOWNLOAD APP NOW</button>
       </div>
-
     </div>
-
     <div class="hero-right">
-      <!-- ✅ UPDATED LOGO: replaced base64 with new URL -->
-      <img class="hero-logo-img"
-           src="https://simbaonline.org/wp-content/uploads/2026/03/ChatGPT-Image-Mar-16-2026-05_37_49-PM.jpg"
-           alt="Star Kalyan Logo">
+      <img src="https://fantasticczone.site/image/hero-img.png" alt="Star Kalyan" class="hero-image" loading="lazy">
     </div>
   </div>
-
-  <!-- ═══ TABS ═══ -->
-  <div class="section">
-    <div class="tabs">
-      <button class="tab on" onclick="go(this,'about')">About this app</button>
-      <button class="tab" onclick="go(this,'testi')">User Reviews</button>
-      <button class="tab" onclick="go(this,'ratings')">Ratings</button>
-      <button class="tab" onclick="go(this,'safety')">Data safety</button>
-      <button class="tab" onclick="go(this,'info')">App info</button>
-    </div>
-
-    <!-- ABOUT -->
-    <div id="tab-about" class="tab-body tc-content">
-      <div class="sec-h">About Star Kalyan</div>
-      <div class="desc clamp" id="desc">
-        <strong>Star Kalyan</strong> is India's #1 Matka result app — trusted by millions of players for fast, accurate, and live Satta Matka results. Get real-time updates for Kalyan, Mumbai, Milan, Rajdhani, Main Ratan and all other markets.<br><br>
-        ✅ <strong>Live Results</strong> — Instant updates, no delays<br>
-        ✅ <strong>Complete Charts</strong> — Full Jodi, Panel, Panna charts<br>
-        ✅ <strong>All Markets</strong> — Kalyan, Mumbai, Rajdhani, Milan, Ratan, Main Bazaar &amp; more<br>
-        ✅ <strong>Free to Use</strong> — 100% free, no hidden charges<br>
-        ✅ <strong>Push Notifications</strong> — Never miss a result<br>
-        ✅ <strong>Expert Tips</strong> — Daily guessing forum by top predictors<br>
-        ✅ <strong>Secure &amp; Safe</strong> — Your data is always protected<br><br>
-        Download Star Kalyan today and join over 1 million players who trust us for the fastest Matka results in India!
-      </div>
-      <button class="more-btn" id="mb" onclick="toggleDesc()">Show more ▾</button>
-      <div style="border-top:1px solid var(--border);margin-top:20px;padding-top:18px;">
-        <div class="sec-h">What's new</div>
-        <div style="font-size:14px;color:var(--sub);line-height:1.8;">
-          <strong>Version 2.5.1</strong><br>
-          • Faster live result updates<br>
-          • New dark mode UI<br>
-          • Improved notification system<br>
-          • Bug fixes and performance improvements
-        </div>
-      </div>
-    </div>
-
-    <!-- TESTIMONIALS -->
-    <div id="tab-testi" class="tab-body tc-content" style="display:none;">
-      <div class="sec-h">💬 User Reviews</div>
-      <div class="tlist">
-        <div class="tc" style="background:linear-gradient(135deg,#e6f4f1,#f2fbf8);border-color:#01875f;">
-          <div class="tc-head">
-            <div class="tc-av" style="background:linear-gradient(135deg,#f9ab00,#e37400);">R</div>
-            <div><div class="tc-name">Ravi Kumar</div><div class="tc-loc">Mumbai, Maharashtra</div></div>
-            <div class="tc-stars">★★★★★</div>
-          </div>
-          <div class="tc-txt">"Star Kalyan app se meri zindagi badal gayi! Results bahut fast aate hain, kabhi delay nahi hota. Sab log download karo — best Matka app hai India mein! 🔥"</div>
-          <div class="tc-badge" style="color:#01875f;">✓ Verified User</div>
-        </div>
-        <div class="tc" style="background:linear-gradient(135deg,#e8f0fe,#f4f8ff);border-color:#1a73e8;">
-          <div class="tc-head">
-            <div class="tc-av" style="background:linear-gradient(135deg,#1a73e8,#0d47a1);">A</div>
-            <div><div class="tc-name">Ankit Sharma</div><div class="tc-loc">Pune, Maharashtra</div></div>
-            <div class="tc-stars">★★★★★</div>
-          </div>
-          <div class="tc-txt">"Maine bahut apps try kiye lekin Star Kalyan jaisa koi nahi! Charts bilkul clear hain, notifications time pe aati hain. 2 saal se use kar raha hoon kabhi problem nahi aayi!"</div>
-          <div class="tc-badge" style="color:#1a73e8;">✓ Verified User · 2 years</div>
-        </div>
-        <div class="tc" style="background:linear-gradient(135deg,#fce8e6,#fff4f3);border-color:#ea4335;">
-          <div class="tc-head">
-            <div class="tc-av" style="background:linear-gradient(135deg,#ea4335,#b31412);">P</div>
-            <div><div class="tc-name">Priya Mehta</div><div class="tc-loc">Ahmedabad, Gujarat</div></div>
-            <div class="tc-stars">★★★★★</div>
-          </div>
-          <div class="tc-txt">"Pehle bohot sari apps use karti thi lekin Star Kalyan ne sab replace kar diya. Live results, guessing tips — sab ek jagah! Meri poori family use karti hai ab! 👍"</div>
-          <div class="tc-badge" style="color:#ea4335;">✓ Verified User</div>
-        </div>
-        <div class="tc" style="background:linear-gradient(135deg,#fff3e0,#fffcf5);border-color:#f9ab00;">
-          <div class="tc-head">
-            <div class="tc-av" style="background:linear-gradient(135deg,#f9ab00,#e65100);">S</div>
-            <div><div class="tc-name">Suresh Patel</div><div class="tc-loc">Rajkot, Gujarat</div></div>
-            <div class="tc-stars">★★★★★</div>
-          </div>
-          <div class="tc-txt">"Kalyan, Mumbai, Rajdhani — sab markets ke results ek app mein! Bahut easy to use aur mobile mein smooth chalta hai. Developer ko bahut shukriya! 👏"</div>
-          <div class="tc-badge" style="color:#f9ab00;">✓ Verified User · Top Reviewer</div>
-        </div>
-        <div class="tc" style="background:linear-gradient(135deg,#e6f4f1,#f2fbf8);border-color:#01875f;">
-          <div class="tc-head">
-            <div class="tc-av" style="background:linear-gradient(135deg,#34a853,#0d652d);">M</div>
-            <div><div class="tc-name">Mohit Verma</div><div class="tc-loc">Delhi, India</div></div>
-            <div class="tc-stars">★★★★★</div>
-          </div>
-          <div class="tc-txt">"Ekdum mast app hai bhai! Jo log matka mein serious hain unke liye must have. Free hai aur koi problem nahi. Download karo abhi bina soche! 💯"</div>
-          <div class="tc-badge" style="color:#01875f;">✓ Verified User · 3 years</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- RATINGS -->
-    <div id="tab-ratings" class="tab-body tc-content" style="display:none;">
-      <div class="rat-wrap">
-        <div style="text-align:center;">
-          <div class="big-n">4.8</div>
-          <div class="big-s">★★★★★</div>
-          <div class="big-c">12.4K reviews</div>
-        </div>
-        <div class="bars">
-          <div class="br"><span class="bl">5</span><div class="bt"><div class="bf" style="width:76%"></div></div></div>
-          <div class="br"><span class="bl">4</span><div class="bt"><div class="bf" style="width:14%"></div></div></div>
-          <div class="br"><span class="bl">3</span><div class="bt"><div class="bf" style="width:5%"></div></div></div>
-          <div class="br"><span class="bl">2</span><div class="bt"><div class="bf" style="width:3%"></div></div></div>
-          <div class="br"><span class="bl">1</span><div class="bt"><div class="bf" style="width:2%"></div></div></div>
-        </div>
-      </div>
-      <div class="rev-list">
-        <div class="ri">
-          <div class="rh"><div class="rav" style="background:linear-gradient(135deg,#f9ab00,#e37400);">R</div>
-            <div><div class="rn">Ravi Kumar</div><div class="rd">March 10, 2025</div></div><div class="rs">★★★★★</div></div>
-          <div class="rtxt">Best Matka app! Results come so fast. Never had any issues. 🔥</div>
-        </div>
-        <div class="ri">
-          <div class="rh"><div class="rav" style="background:linear-gradient(135deg,#34a853,#0d652d);">A</div>
-            <div><div class="rn">Ankit Sharma</div><div class="rd">Feb 28, 2025</div></div><div class="rs">★★★★★</div></div>
-          <div class="rtxt">Very good app. Live results are accurate. Charts easy to read. Download karo!</div>
-        </div>
-        <div class="ri">
-          <div class="rh"><div class="rav" style="background:linear-gradient(135deg,#1a73e8,#0d47a1);">P</div>
-            <div><div class="rn">Priya Mehta</div><div class="rd">Feb 15, 2025</div></div><div class="rs">★★★★☆</div></div>
-          <div class="rtxt">Great app, notifications work perfectly. Love the live results feature!</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- SAFETY -->
-    <div id="tab-safety" class="tab-body tc-content" style="display:none;">
-      <div class="saf-note">
-        <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.35C17.25 22.15 21 17.25 21 12V7l-9-5z" fill="#01875f"/><path d="m9 12 2 2 4-4" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
-        <div><div style="font-size:14px;font-weight:600;color:var(--green);">Data safety verified</div><div style="font-size:12px;color:var(--sub);">Developer provided safety information</div></div>
-      </div>
-      <div class="slist">
-        <div class="srow"><div class="sic"><svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z" stroke="#01875f" stroke-width="2"/></svg></div>
-          <div><div class="sh">No data shared with third parties</div><div class="sp">Developer doesn't share data with other companies</div></div></div>
-        <div class="srow"><div class="sic"><svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="#01875f" stroke-width="2"/></svg></div>
-          <div><div class="sh">Encrypted in transit</div><div class="sp">All data secured with industry-standard encryption</div></div></div>
-        <div class="srow"><div class="sic"><svg width="20" height="20" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke="#01875f" stroke-width="2"/><path d="m9 12 2 2 4-4" stroke="#01875f" stroke-width="2" stroke-linecap="round"/></svg></div>
-          <div><div class="sh">You can request data deletion</div><div class="sp">Developer allows deletion of your personal data</div></div></div>
-      </div>
-    </div>
-
-    <!-- APP INFO -->
-    <div id="tab-info" class="tab-body tc-content" style="display:none;">
-      <div class="ilist">
-        <div class="ir"><svg class="iic" width="20" height="20" fill="none" viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-          <div><div class="il">Version</div><div class="iv">2.5.1</div></div></div>
-        <div class="ir"><svg class="iic" width="20" height="20" fill="none" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2"/><path d="M16 2v4M8 2v4M3 10h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-          <div><div class="il">Updated on</div><div class="iv">March 10, 2025</div></div></div>
-        <div class="ir"><svg class="iic" width="20" height="20" fill="none" viewBox="0 0 24 24"><path d="M12 4v12m0 0-4-4m4 4 4-4M4 20h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-          <div><div class="il">File size</div><div class="iv">~15 MB</div></div></div>
-        <div class="ir"><svg class="iic" width="20" height="20" fill="none" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" stroke="currentColor" stroke-width="2"/></svg>
-          <div><div class="il">Downloads</div><div class="iv">1,000,000+</div></div></div>
-        <div class="ir"><svg class="iic" width="20" height="20" fill="none" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" stroke="currentColor" stroke-width="2"/><path d="M12 18h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-          <div><div class="il">Requires Android</div><div class="iv">5.0 and up</div></div></div>
-        <div class="ir"><svg class="iic" width="20" height="20" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 8v4l3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-          <div><div class="il">Developer</div><div class="iv">Star Kalyan Official</div></div></div>
-      </div>
-    </div>
-
-  </div><!-- end section -->
-</div><!-- end wrap -->
-
-<!-- MODAL -->
-<div class="modal-ov" id="dlModal">
-  <div class="msheet">
-    <div class="mdrag"></div>
-    <div class="mt" id="mT">Downloading...</div>
-    <div class="msub" id="mS">Star Kalyan APK is being prepared</div>
-    <div class="mfile"><div class="mfi">📦</div>
-      <div><h4>star-kalyan.apk</h4><p>Version 2.5.1 · ~15 MB · Free</p></div></div>
-    <div class="mpt"><div class="mpf" id="mpf"></div></div>
-    <div class="mptxt" id="mptxt">0% — Starting download...</div>
-    <button class="mcancel" onclick="closeModal()">Cancel</button>
-  </div>
-</div>
-
-<!-- BOTTOM NAV -->
-<div class="bnav">
-  <div class="bni">
-    <div class="bnitem on"><svg fill="none" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2"/></svg>Home</div>
-    <div class="bnitem"><svg fill="none" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke="currentColor" stroke-width="2"/></svg>Charts</div>
-    <div class="bnitem"><svg fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M12 8v4l3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Updates</div>
-    <div class="bnitem"><svg fill="none" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" stroke="currentColor" stroke-width="2"/></svg>Account</div>
-  </div>
-</div>
-
-<!-- FOOTER -->
-<footer class="footer">
-  <div class="credit">
-    <span>Ads by</span>
-    <a href="https://t.me/+TRlJl628l-FkMWE9" target="_blank" rel="noopener">
-      <span class="tgico"><svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></span>
-      @Nexgroww_agency
-    </a>
-  </div>
-</footer>
-
-<script>
-function go(btn,id){
-  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('on'));
-  btn.classList.add('on');
-  document.querySelectorAll('.tc-content').forEach(c=>c.style.display='none');
-  document.getElementById('tab-'+id).style.display='block';
-}
-function toggleDesc(){
-  const el=document.getElementById('desc'),btn=document.getElementById('mb');
-  btn.textContent=el.classList.toggle('clamp')?'Show more ▾':'Show less ▴';
-}
-let timer=null;
-function startDL(e){openModal();animate();}
-function openModal(){
-  document.getElementById('dlModal').classList.add('open');
-  document.getElementById('mT').textContent='Downloading...';
-  document.getElementById('mS').textContent='Star Kalyan APK is being prepared';
-}
-function closeModal(){
-  document.getElementById('dlModal').classList.remove('open');
-  clearInterval(timer);
-  document.getElementById('mpf').style.width='0%';
-  document.getElementById('mptxt').textContent='0% — Starting download...';
-  const pw=document.getElementById('pw');
-  if(pw){pw.classList.remove('show');document.getElementById('pf').style.width='0%';}
-}
-function animate(){
-  let p=0;
-  const mpf=document.getElementById('mpf'),mptxt=document.getElementById('mptxt'),
-    mT=document.getElementById('mT'),mS=document.getElementById('mS'),
-    pf=document.getElementById('pf'),pl=document.getElementById('pl'),pw=document.getElementById('pw');
-  if(pw)pw.classList.add('show');
-  clearInterval(timer);
-  const msgs=[[0,'Starting...'],[20,'Connecting...'],[40,'Downloading APK...'],[70,'Verifying...'],[90,'Almost done...'],[100,'Complete! ✓']];
-  timer=setInterval(()=>{
-    p=Math.min(p+Math.random()*7+2,100);
-    mpf.style.width=p+'%';
-    if(pf)pf.style.width=p+'%';
-    const m=[...msgs].reverse().find(x=>p>=x[0]);
-    if(m){mptxt.textContent=Math.round(p)+'% — '+m[1];if(pl)pl.textContent=m[1];}
-    if(p>=100){
-      clearInterval(timer);
-      mT.textContent='Download Complete! 🎉';
-      mS.textContent='Open file manager to install Star Kalyan';
-      setTimeout(closeModal,3000);
-    }
-  },200);
-}
-document.getElementById('dlModal').addEventListener('click',function(e){if(e.target===this)closeModal();});
-</script>
-
+</section>
 <!-- Meta Pixel Code -->
 <script>
 
@@ -624,6 +104,5 @@ src="https://www.facebook.com/tr?id=920634500866812&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
 
- 
 </body>
 </html>
